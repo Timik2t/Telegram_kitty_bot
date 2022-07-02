@@ -55,16 +55,6 @@ def new_cat(update, context):
     context.bot.send_photo(chat.id, get_new_image())
 
 
-def new_dog(update, context):
-    chat = update.effective_chat
-    logging.info(RESPONSE_USERNAME.format(
-        image_name='песеля',
-        username=update.message.chat.username,
-        name=update.message.chat.first_name
-    ))
-    context.bot.send_photo(chat.id, get_new_dog_image())
-
-
 GREETING_MESSAGE = 'Привет, {name}. Посмотри какого котика я тебе нашел'
 
 
@@ -90,7 +80,6 @@ def main():
 
     updater.dispatcher.add_handler(CommandHandler('start', wake_up))
     updater.dispatcher.add_handler(CommandHandler('newcat', new_cat))
-    updater.dispatcher.add_handler(CommandHandler('newdog', new_dog))
 
     updater.start_polling()
     updater.idle()
